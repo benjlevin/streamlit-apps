@@ -19,9 +19,7 @@ if st.button("Calculate EDD from LMP"):
         ga_days = (ref_date - lmp).days
         weeks, days = divmod(ga_days, 7)
         output = f"""
-        **LMP:** {lmp.strftime('%m/%d/%Y')}  
-        **EDD:** {edd.strftime('%m/%d/%Y')}  
-        **GA on {ref_date.strftime('%m/%d/%Y')}:** {weeks}w{days}d
+        LMP: {lmp.strftime('%m/%d/%Y')} | EDD:** {edd.strftime('%m/%d/%Y')} | GA on {ref_date.strftime('%m/%d/%Y')}:** {weeks}w{days}d
         """
         st.markdown(output)
     except Exception as e:
