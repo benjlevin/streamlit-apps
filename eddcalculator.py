@@ -32,24 +32,6 @@ def copy_button(label, text, key):
     """
     st.components.v1.html(copy_code, height=40)
 
-"""
-def copy_button(label, text, key):
-    escaped_text = text.replace("'", "\\'")
-    copy_code = f"""
-    <script>
-    function copyToClipboard_{key}() {{
-        navigator.clipboard.writeText('{escaped_text}').then(function() {{
-            const status = document.getElementById('copy-status-{key}');
-            status.innerText = '📋 Copied!';
-        }});
-    }}
-    </script>
-    <button onclick="copyToClipboard_{key}()">📋 {label}</button>
-    <span id="copy-status-{key}" style="margin-left:10px;color:green"></span>
-    """
-    st.components.v1.html(copy_code, height=35)
-"""
-
 st.title("🍼 Pregnancy EDD Calculator")
 
 # --- LMP to EDD ---
