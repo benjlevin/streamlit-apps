@@ -118,7 +118,7 @@ if st.button("Reconcile LMP and US EDDs"):
             f"ACOG threshold: {threshold} days\n"
             f"Recommendation: {recommendation}"
         )
-        st.info(output.replace("\n", "<br>"), unsafe_allow_html=True)
+        st.markdown(f"📝 **Reconciliation Result:**<br>{output.replace('\n', '<br>')}", unsafe_allow_html=True)
         copy_button("Copy Reconciliation", output, "recon")
     except Exception as e:
         st.error(str(e))
