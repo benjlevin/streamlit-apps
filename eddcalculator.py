@@ -2,6 +2,38 @@ import datetime
 import streamlit as st
 
 def copy_button(label, text, key):
+    escaped_text = text.replace("'", "\\'").replace("\n", "\\n")
+    copy_code = f"""
+    <style>
+    .copy-btn-{key} {{
+        background-color: #f63366;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 0.3rem;
+    }}
+    .copy-btn-{key}:hover {{
+        background-color: #d82b57;
+    }}
+    </style>
+    <script>
+    function copyToClipboard_{key}() {{
+        navigator.clipboard.writeText('{escaped_text}').then(function() {{
+            const status = document.getElementById('copy-status-{key}');
+            status.innerText = '📋 Copied!';
+        }});
+    }}
+    </script>
+    <button class="copy-btn-{key}" onclick="copyToClipboard_{key}()">📋 {label}</button>
+    <span id="copy-status-{key}" style="margin-left:10px;color:green"></span>
+    """
+    st.components.v1.html(copy_code, height=40)
+
+"""
+def copy_button(label, text, key):
     escaped_text = text.replace("'", "\\'")
     copy_code = f"""
     <script>
@@ -16,6 +48,7 @@ def copy_button(label, text, key):
     <span id="copy-status-{key}" style="margin-left:10px;color:green"></span>
     """
     st.components.v1.html(copy_code, height=35)
+"""
 
 st.title("🍼 Pregnancy EDD Calculator")
 
