@@ -21,7 +21,7 @@ st.title("🍼 Pregnancy EDD Calculator")
 
 # --- LMP to EDD ---
 st.markdown("### 📅 Calculate EDD from LMP")
-lmp = st.date_input("LMP", value=datetime.date.today() - datetime.timedelta(days=280), format="MM/DD/YYYY", key="lmp")
+lmp = st.date_input("LMP", value=datetime.date.today() - datetime.timedelta(days=56), format="MM/DD/YYYY", key="lmp")
 ref_date = st.date_input("Reference Date", value=datetime.date.today(), format="MM/DD/YYYY", key="ref")
 if st.button("Calculate EDD from LMP"):
     try:
