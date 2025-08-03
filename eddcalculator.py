@@ -49,21 +49,6 @@ if st.button("Calculate EDD from LMP"):
     except Exception as e:
         st.error(str(e))
 
-# --- GA to Date ---
-st.markdown("---")
-st.markdown("### ⏳ Calculate Date from Gestational Age")
-edd = st.date_input("EDD", value=datetime.date.today() + datetime.timedelta(days=100), format="MM/DD/YYYY", key="edd")
-weeks = st.number_input("GA Weeks", min_value=0, max_value=42, value=0, step=1)
-days = st.number_input("GA Days", min_value=0, max_value=6, value=0, step=1)
-if st.button("Calculate Date for Given GA"):
-    try:
-        target_date = edd - datetime.timedelta(weeks=40 - weeks, days=-days)
-        output = f"Date when patient will be {weeks}w{days}d: {target_date.strftime('%m/%d/%Y')}"
-        st.info(output)
-        copy_button("Copy GA Date", output, "ga")
-    except Exception as e:
-        st.error(str(e))
-
 # --- US to EDD ---
 st.markdown("---")
 st.markdown("### 🩻 Calculate EDD from Ultrasound")
@@ -122,3 +107,20 @@ if st.button("Reconcile LMP and US EDDs"):
         copy_button("Copy Reconciliation", output, "recon")
     except Exception as e:
         st.error(str(e))
+
+# --- GA to Date ---
+st.markdown("---")
+st.markdown("### ⏳ Calculate Date from Gestational Age")
+edd = st.date_input("EDD", value=datetime.date.today() + datetime.timedelta(days=100), format="MM/DD/YYYY", key="edd")
+weeks = st.number_input("GA Weeks", min_value=0, max_value=42, value=0, step=1)
+days = st.number_input("GA Days", min_value=0, max_value=6, value=0, step=1)
+if st.button("Calculate Date for Given GA"):
+    try:
+        target_date = edd - datetime.timedelta(weeks=40 - weeks, days=-days)
+        output = f"Date when patient will be {weeks}w{days}d: {target_date.strftime('%m/%d/%Y')}"
+        st.info(output)
+        copy_button("Copy GA Date", output, "ga")
+    except Exception as e:
+        st.error(str(e))
+
+
